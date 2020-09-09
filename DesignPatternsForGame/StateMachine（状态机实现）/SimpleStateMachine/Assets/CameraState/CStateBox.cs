@@ -15,20 +15,24 @@ namespace GJ.Game.CameraState
         public void DoStart()
         {
             var spawnState = new SpwanState();
+            spawnState.OnInit(this, 1.0f);
             m_States.Add(typeof(SpwanState), spawnState);
 
             var activeState = new ActiveState();
+            activeState.OnInit(this, 1.0f);
             m_States.Add(typeof(ActiveState), activeState);
 
             var deathState = new DeathState();
+            deathState.OnInit(this, 1.0f);
             m_States.Add(typeof(DeathState), deathState);
 
             var waiteSpawnState = new WaiteSpawnState();
+            waiteSpawnState.OnInit(this, 1.0f);
             m_States.Add(typeof(WaiteSpawnState), waiteSpawnState);
 
             StartState<SpwanState>();
         }
-
+        
         public void DoUpdate(float deltaTime)
         {
             _currentStateTime += deltaTime;
